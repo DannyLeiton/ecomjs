@@ -15,4 +15,9 @@ How can we tackle this challenge?
 
   -> Async: Services communicate with each other using events:
     -> Uses an Event Bus to emit and receive messages. (This looks like Kafka).
-    -> Have dependent services listening to the event bus when some of its dependency services, and record that to its own db with the structure it needs.
+    -> Have data "dependent" services listening to the event bus when some of its data "dependency" services, and record that to its own db with the structure it needs.
+      -> Bizarre.
+      -> Pros: - O dependecy on ther services.
+               - "Dependent" services will be very fast.
+      -> Cons: - Data Duplication => Paying for extra storage + extra db. But, np: AWS or Azure MySQL $/GB/Month = .115, it's very cheap.
+ 
