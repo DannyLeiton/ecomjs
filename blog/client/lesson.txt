@@ -1,0 +1,11 @@
+Project Arch:
+
+                     App
+                      |
+                ______|______
+                |           |
+             PostList   PostCreate
+                |
+        ________|______
+        |             |    
+    CommentList  CommentCreate
