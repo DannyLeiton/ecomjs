@@ -21,3 +21,9 @@ How can we tackle this challenge?
                - "Dependent" services will be very fast.
       -> Cons: - Data Duplication => Paying for extra storage + extra db. But, np: AWS or Azure MySQL $/GB/Month = .115, it's very cheap.
  
+
+ -> Event Bus:
+    -> Many different implementations: RabbitMQ, Kafka, NATS...
+    -> Receives events, publishes them to listeners.
+    -> Many different subtle features that make async communication way easier or way harder.
+    -> Here's a custom built Express event bus, with limited features.
