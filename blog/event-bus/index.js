@@ -9,6 +9,7 @@ app.post('/events', (req, res) => {
   const event = req.body
 
   // TODO: add possible failure handlers.
+  /* Not needed
   axios.post('http://localhost:4000/events', event)
     .catch((err) => {
       console.log(err.message);
@@ -18,6 +19,7 @@ app.post('/events', (req, res) => {
     .catch((err) => {
       console.log(err.message);
     });
+  */
   axios.post('http://localhost:4002/events', event)
     .catch((err) => {
       console.log(err.message);
