@@ -1,0 +1,29 @@
+Why do Microservices follow DB-Per-Service approach?
+1. Each service should run independently of other services.
+2. DB schemas/structure might change unexpectedly.
+3. Some services might function more efficiently with different types of DBs (sql vs nosql).
+
+How can we tackle this challenge?
+-> Communication Strategies Between Services:
+  -> Sync: Services communicate with each other using direct requests:
+    -> Conceptually easy to understand.
+    -> A service only needing info from other services won't need a db.
+    -> Introduces a dependecy between services.
+    -> If any inter-sercie request fails, th overall request fails.
+    -> The entire request is only as fast as the slowest request.
+    -> Can easily introduce webs of requests.
+
+  -> Async: Services communicate with each other using events:
+    -> Uses an Event Bus to emit and receive messages. (This looks like Kafka).
+    -> Have data "dependent" services listening to the event bus when some of its data "dependency" services, and record that to its own db with the structure it needs.
+      -> Bizarre.
+      -> Pros: - O dependecy on ther services.
+               - "Dependent" services will be very fast.
+      -> Cons: - Data Duplication => Paying for extra storage + extra db. But, np: AWS or Azure MySQL $/GB/Month = .115, it's very cheap.
+ 
+
+ -> Event Bus:
+    -> Many different implementations: RabbitMQ, Kafka, NATS...
+    -> Receives events, publishes them to listeners.
+    -> Many different subtle features that make async communication way easier or way harder.
+    -> Here's a custom built Express event bus, with limited features.
