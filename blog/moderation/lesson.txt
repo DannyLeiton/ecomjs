@@ -1,0 +1,16 @@
+-> Moderation is easier to implement in the Client app, but not if the filte list changes frequently.
+              -> easier to implemente in the comments service, but let's add a new microservice.
+-> It might take a long time for the new service to moderate a comment.
+
+Comment Moderation Statuses:  Pending, Approved, Rejected
+
+Think of event types: 
+CommentModerated, comment.status = 'approved'
+CommentUpvoted, comment.upvotes += 1
+CommentDownvoted, comment.downvotes += 1
+CommentPromoted, comment.promoted = true
+CommentAnonymized, comment.userId = null
+CommentSearchable, comment.searchable = true
+CommentAdvertised, comment.advertised = true
+
+Generic event type for the Query Service => CommentUpdated
